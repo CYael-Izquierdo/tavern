@@ -1,0 +1,34 @@
+est_name: Deleate a created project
+
+marks:
+  - Workings
+  - usefixtures:
+    - generate_name
+    - generate_identifier
+    - get_name
+    - get_identifier
+
+includes:
+  - !include constants.yaml
+
+stages:
+- name: Create project
+
+  request:
+    url: "{protocol}://{host}/projects.json"
+    method: POST
+    headers:
+      X-Redmine-API-Key: "{api_key}"
+      Content-Type: "{content_type}"
+    json:
+      project:
+        name: '{generate_name}'
+        identifier: '{generate_identifier}'
+        description: asdasdasdasd
+
+  response:
+    status_code: 201
+    save:
+      body:
+        id: project.id
+
