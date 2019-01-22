@@ -1,7 +1,7 @@
 test_name: Modify project name
 
 marks:
-  - Working
+  - NotImplemented
   - usefixtures:
     - generate_name
     - generate_identifier
