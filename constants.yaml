@@ -4,5 +4,6 @@ description: key and urls
 variables:
   protocol: http
   host: 192.168.64.2
+  port: 8443
   api_key: c278b5e3cca993d48a760aae98c8c81e108bb64f
   content_type: application/json

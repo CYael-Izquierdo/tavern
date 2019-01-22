@@ -1,7 +1,7 @@
-est_name: Deleate a created project
+test_name: Modify project name
 
 marks:
-  - Workings
+  - Working
   - usefixtures:
     - generate_name
     - generate_identifier
@@ -12,23 +12,52 @@ includes:
   - !include constants.yaml
 
 stages:
-- name: Create project
+  - name: Create project
+    request:
+      url: "{protocol}://{host}/projects.json"
+      method: POST
+      headers:
+        X-Redmine-API-Key: "{api_key}"
+        Content-Type: "{content_type}"
+      json:
+        project:
+          name: '{generate_name}'
+          identifier: '{generate_identifier}'
+          description: asdasdasdasd
 
-  request:
-    url: "{protocol}://{host}/projects.json"
-    method: POST
-    headers:
-      X-Redmine-API-Key: "{api_key}"
-      Content-Type: "{content_type}"
-    json:
-      project:
-        name: '{generate_name}'
-        identifier: '{generate_identifier}'
-        description: asdasdasdasd
+    response:
+      status_code: 201
+      save:
+        body:
+          id: project.id
 
-  response:
-    status_code: 201
-    save:
+  - name: Modify project name
+    request:
+      url: "{protocol}://{host}/projects/{id}.json"
+      method: PUT
+      headers:
+        X-Redmine-API-Key: "{api_key}"
+        Content-Type: "{content_type}"
+      json:
+        project:
+          name: new name
+          description: new description
+
+    response:
+      status_code: 200
+
+  - name: Get updated project
+    request:
+      url: "{protocol}://{host}/projects/{id}.json"
+      method: GET
+      headers:
+        X-Redmine-API-Key: "{api_key}"
+        Content-Type: "{content_type}"
+
+    response:
+      status_code: 200
       body:
-        id: project.id
-
+        project:
+          id: !int "{id}"
+          name: new name
+          description: new description
