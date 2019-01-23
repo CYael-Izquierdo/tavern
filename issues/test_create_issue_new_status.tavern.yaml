@@ -2,6 +2,7 @@ test_name: Create new issue with valid status
 
 marks:
   - Working
+  - probando
   - usefixtures:
       - generate_name
       - get_name
