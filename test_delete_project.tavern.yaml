@@ -13,6 +13,7 @@ includes:
 
 stages:
   - name: Create project
+
     request:
       url: "{protocol}://{host}/projects.json"
       method: POST
@@ -26,7 +27,7 @@ stages:
           description: asdasdasdasd
 
     response:
-      status_code: 201
+      status_code: 2010
       save:
         body:
           id: project.id

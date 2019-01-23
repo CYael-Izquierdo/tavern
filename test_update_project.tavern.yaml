@@ -13,6 +13,7 @@ includes:
 
 stages:
   - name: Create project
+
     request:
       url: "{protocol}://{host}/projects.json"
       method: POST
