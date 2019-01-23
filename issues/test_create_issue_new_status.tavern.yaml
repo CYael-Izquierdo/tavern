@@ -13,7 +13,6 @@ marks:
       key: status_id
       vals:
         - 1
-        - 2
   - parametrize:
       key: priority_id
       vals:
