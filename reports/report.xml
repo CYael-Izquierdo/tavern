@@ -1,6 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?><testsuite errors="0" failures="1" name="pytest" skips="1" tests="3" time="0.868"><testcase classname="test_create_project.tavern.yaml" file="test_create_project.tavern.yaml" line="0" name="Create new project without modules" time="0.44454240798950195"></testcase><testcase classname="test_delete_project.tavern.yaml" file="test_delete_project.tavern.yaml" line="0" name="Deleate a created project" time="0.17338848114013672"><failure message="tavern.util.exceptions.TestFailError: Test &apos;Create project&apos; failed:
+<?xml version="1.0" encoding="utf-8"?><testsuite errors="0" failures="1" name="pytest" skips="1" tests="3" time="0.867"><testcase classname="test_create_project.tavern.yaml" file="test_create_project.tavern.yaml" line="0" name="Create new project without module" time="0.44965672492980957"></testcase><testcase classname="test_delete_project.tavern.yaml" file="test_delete_project.tavern.yaml" line="0" name="Deleate a created project" time="0.17470026016235352"><failure message="tavern.util.exceptions.TestFailError: Test &apos;Create project&apos; failed:
 - Status code was 201, expected 2010">cls = &lt;class &apos;_pytest.runner.CallInfo&apos;&gt;
-func = &lt;function call_runtest_hook.&lt;locals&gt;.&lt;lambda&gt; at 0x110393510&gt;
+func = &lt;function call_runtest_hook.&lt;locals&gt;.&lt;lambda&gt; at 0x110c0e598&gt;
 when = &apos;call&apos;
 reraise = (&lt;class &apos;_pytest.outcomes.Exit&apos;&gt;, &lt;class &apos;KeyboardInterrupt&apos;&gt;)
 
@@ -44,9 +44,9 @@ kwargs = {&apos;item&apos;: &lt;YamlItem Deleate a created project&gt;}, notinca
 ../virtual-environments/TavernVENV/lib/python3.7/site-packages/pluggy/hooks.py:284: 
 _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
 
-self = &lt;_pytest.config.PytestPluginManager object at 0x10e64e2b0&gt;
+self = &lt;_pytest.config.PytestPluginManager object at 0x10e6962b0&gt;
 hook = &lt;_HookCaller &apos;pytest_runtest_call&apos;&gt;
-methods = [&lt;HookImpl plugin_name=&apos;runner&apos;, plugin=&lt;module &apos;_pytest.runner&apos; from &apos;/Users/cizquierdo/Jenkins/workspace/virtual-env...t 0x10f639be0&gt;&gt;, &lt;HookImpl plugin_name=&apos;logging-plugin&apos;, plugin=&lt;_pytest.logging.LoggingPlugin object at 0x10fde06d8&gt;&gt;]
+methods = [&lt;HookImpl plugin_name=&apos;runner&apos;, plugin=&lt;module &apos;_pytest.runner&apos; from &apos;/Users/cizquierdo/Jenkins/workspace/virtual-env...t 0x10f7329b0&gt;&gt;, &lt;HookImpl plugin_name=&apos;logging-plugin&apos;, plugin=&lt;_pytest.logging.LoggingPlugin object at 0x10fe2a160&gt;&gt;]
 kwargs = {&apos;item&apos;: &lt;YamlItem Deleate a created project&gt;}
 
     def _hookexec(self, hook, methods, kwargs):
@@ -58,7 +58,7 @@ kwargs = {&apos;item&apos;: &lt;YamlItem Deleate a created project&gt;}
 _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
 
 hook = &lt;_HookCaller &apos;pytest_runtest_call&apos;&gt;
-methods = [&lt;HookImpl plugin_name=&apos;runner&apos;, plugin=&lt;module &apos;_pytest.runner&apos; from &apos;/Users/cizquierdo/Jenkins/workspace/virtual-env...t 0x10f639be0&gt;&gt;, &lt;HookImpl plugin_name=&apos;logging-plugin&apos;, plugin=&lt;_pytest.logging.LoggingPlugin object at 0x10fde06d8&gt;&gt;]
+methods = [&lt;HookImpl plugin_name=&apos;runner&apos;, plugin=&lt;module &apos;_pytest.runner&apos; from &apos;/Users/cizquierdo/Jenkins/workspace/virtual-env...t 0x10f7329b0&gt;&gt;, &lt;HookImpl plugin_name=&apos;logging-plugin&apos;, plugin=&lt;_pytest.logging.LoggingPlugin object at 0x10fe2a160&gt;&gt;]
 kwargs = {&apos;item&apos;: &lt;YamlItem Deleate a created project&gt;}
 
     self._inner_hookexec = lambda hook, methods, kwargs: hook.multicall(
@@ -70,7 +70,7 @@ kwargs = {&apos;item&apos;: &lt;YamlItem Deleate a created project&gt;}
 ../virtual-environments/TavernVENV/lib/python3.7/site-packages/pluggy/manager.py:62: 
 _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
 
-hook_impls = [&lt;HookImpl plugin_name=&apos;runner&apos;, plugin=&lt;module &apos;_pytest.runner&apos; from &apos;/Users/cizquierdo/Jenkins/workspace/virtual-env...t 0x10f639be0&gt;&gt;, &lt;HookImpl plugin_name=&apos;logging-plugin&apos;, plugin=&lt;_pytest.logging.LoggingPlugin object at 0x10fde06d8&gt;&gt;]
+hook_impls = [&lt;HookImpl plugin_name=&apos;runner&apos;, plugin=&lt;module &apos;_pytest.runner&apos; from &apos;/Users/cizquierdo/Jenkins/workspace/virtual-env...t 0x10f7329b0&gt;&gt;, &lt;HookImpl plugin_name=&apos;logging-plugin&apos;, plugin=&lt;_pytest.logging.LoggingPlugin object at 0x10fe2a160&gt;&gt;]
 caller_kwargs = {&apos;item&apos;: &lt;YamlItem Deleate a created project&gt;}
 firstresult = False
 
@@ -130,7 +130,7 @@ firstresult = False
 ../virtual-environments/TavernVENV/lib/python3.7/site-packages/pluggy/callers.py:208: 
 _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
 
-self = &lt;pluggy.callers._Result object at 0x10fe60eb8&gt;
+self = &lt;pluggy.callers._Result object at 0x10feb8eb8&gt;
 
     def get_result(self):
         &quot;&quot;&quot;Get the result(s) for this hook call.
@@ -149,7 +149,7 @@ self = &lt;pluggy.callers._Result object at 0x10fe60eb8&gt;
 ../virtual-environments/TavernVENV/lib/python3.7/site-packages/pluggy/callers.py:80: 
 _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
 
-hook_impls = [&lt;HookImpl plugin_name=&apos;runner&apos;, plugin=&lt;module &apos;_pytest.runner&apos; from &apos;/Users/cizquierdo/Jenkins/workspace/virtual-env...t 0x10f639be0&gt;&gt;, &lt;HookImpl plugin_name=&apos;logging-plugin&apos;, plugin=&lt;_pytest.logging.LoggingPlugin object at 0x10fde06d8&gt;&gt;]
+hook_impls = [&lt;HookImpl plugin_name=&apos;runner&apos;, plugin=&lt;module &apos;_pytest.runner&apos; from &apos;/Users/cizquierdo/Jenkins/workspace/virtual-env...t 0x10f7329b0&gt;&gt;, &lt;HookImpl plugin_name=&apos;logging-plugin&apos;, plugin=&lt;_pytest.logging.LoggingPlugin object at 0x10fe2a160&gt;&gt;]
 caller_kwargs = {&apos;item&apos;: &lt;YamlItem Deleate a created project&gt;}
 firstresult = False
 
@@ -227,7 +227,7 @@ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
 
 in_file = local(&apos;/Users/cizquierdo/Jenkins/workspace/Tavern/test_delete_project.tavern.yaml&apos;)
 test_spec = {&apos;test_name&apos;: &apos;Deleate a created project&apos;, &apos;marks&apos;: [&apos;Working&apos;, {&apos;usefixtures&apos;: [&apos;generate_name&apos;, &apos;generate_identifier..., &apos;headers&apos;: {&apos;X-Redmine-API-Key&apos;: &apos;{api_key}&apos;, &apos;Content-Type&apos;: &apos;{content_type}&apos;}}, &apos;response&apos;: {&apos;status_code&apos;: 200}}]}
-global_cfg = {&apos;backends&apos;: {&apos;http&apos;: &apos;requests&apos;, &apos;mqtt&apos;: &apos;paho-mqtt&apos;}, &apos;strict&apos;: [], &apos;variables&apos;: {&apos;api_key&apos;: &apos;c278b5e3cca993d48a760a...&apos;content_type&apos;: &apos;application/json&apos;, &apos;generate_identifier&apos;: &apos;brooke-mcmillan&apos;, &apos;generate_name&apos;: &apos;Brooke Mcmillan&apos;, ...}}
+global_cfg = {&apos;backends&apos;: {&apos;http&apos;: &apos;requests&apos;, &apos;mqtt&apos;: &apos;paho-mqtt&apos;}, &apos;strict&apos;: [], &apos;variables&apos;: {&apos;api_key&apos;: &apos;c278b5e3cca993d48a760a...e108bb64f&apos;, &apos;content_type&apos;: &apos;application/json&apos;, &apos;generate_identifier&apos;: &apos;chris-lam&apos;, &apos;generate_name&apos;: &apos;Chris Lam&apos;, ...}}
 
     def run_test(in_file, test_spec, global_cfg):
         &quot;&quot;&quot;Run a single tavern test
@@ -348,10 +348,10 @@ global_cfg = {&apos;backends&apos;: {&apos;http&apos;: &apos;requests&apos;, &ap
 ../virtual-environments/TavernVENV/lib/python3.7/site-packages/tavern/core.py:161: 
 _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
 
-sessions = {&apos;requests&apos;: &lt;requests.sessions.Session object at 0x10fe06b38&gt;}
+sessions = {&apos;requests&apos;: &lt;requests.sessions.Session object at 0x10fe56f60&gt;}
 stage = {&apos;name&apos;: &apos;Create project&apos;, &apos;request&apos;: {&apos;url&apos;: &apos;{protocol}://{host}/projects.json&apos;, &apos;method&apos;: &apos;POST&apos;, &apos;headers&apos;: {&apos;X-Re...ntifier}&apos;, &apos;description&apos;: &apos;asdasdasdasd&apos;}}}, &apos;response&apos;: {&apos;status_code&apos;: 2010, &apos;save&apos;: {&apos;body&apos;: {&apos;id&apos;: &apos;project.id&apos;}}}}
-tavern_box = &lt;Box: {&apos;env_vars&apos;: {&apos;BUILD_URL&apos;: &apos;http://localhost:8080/job/Tavern/12/&apos;, &apos;TERM_PROGRAM&apos;: &apos;Apple_Terminal&apos;, &apos;ANDROID_HO...aae98c8c81e108bb64f&apos;, &apos;Content-Type&apos;: &apos;application/json&apos;}, &apos;verify&apos;: True, &apos;stream&apos;: False, &apos;allow_redirects&apos;: False}}&gt;
-test_block_config = {&apos;backends&apos;: {&apos;http&apos;: &apos;requests&apos;, &apos;mqtt&apos;: &apos;paho-mqtt&apos;}, &apos;strict&apos;: [], &apos;variables&apos;: {&apos;api_key&apos;: &apos;c278b5e3cca993d48a760a...&apos;content_type&apos;: &apos;application/json&apos;, &apos;generate_identifier&apos;: &apos;brooke-mcmillan&apos;, &apos;generate_name&apos;: &apos;Brooke Mcmillan&apos;, ...}}
+tavern_box = &lt;Box: {&apos;env_vars&apos;: {&apos;BUILD_URL&apos;: &apos;http://localhost:8080/job/Tavern/13/&apos;, &apos;TERM_PROGRAM&apos;: &apos;Apple_Terminal&apos;, &apos;ANDROID_HO...aae98c8c81e108bb64f&apos;, &apos;Content-Type&apos;: &apos;application/json&apos;}, &apos;verify&apos;: True, &apos;stream&apos;: False, &apos;allow_redirects&apos;: False}}&gt;
+test_block_config = {&apos;backends&apos;: {&apos;http&apos;: &apos;requests&apos;, &apos;mqtt&apos;: &apos;paho-mqtt&apos;}, &apos;strict&apos;: [], &apos;variables&apos;: {&apos;api_key&apos;: &apos;c278b5e3cca993d48a760a...e108bb64f&apos;, &apos;content_type&apos;: &apos;application/json&apos;, &apos;generate_identifier&apos;: &apos;chris-lam&apos;, &apos;generate_name&apos;: &apos;Chris Lam&apos;, ...}}
 
     def run_stage(sessions, stage, tavern_box, test_block_config):
         &quot;&quot;&quot;Run one stage from the test
@@ -383,7 +383,7 @@ test_block_config = {&apos;backends&apos;: {&apos;http&apos;: &apos;requests&apo
 ../virtual-environments/TavernVENV/lib/python3.7/site-packages/tavern/core.py:196: 
 _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
 
-self = &lt;tavern._plugins.rest.response.RestResponse object at 0x1102ed710&gt;
+self = &lt;tavern._plugins.rest.response.RestResponse object at 0x1103341d0&gt;
 response = &lt;Response [201]&gt;
 
     def verify(self, response):
@@ -465,4 +465,4 @@ response = &lt;Response [201]&gt;
 E           tavern.util.exceptions.TestFailError: Test &apos;Create project&apos; failed:
 E           - Status code was 201, expected 2010
 
-../virtual-environments/TavernVENV/lib/python3.7/site-packages/tavern/_plugins/rest/response.py:207: TestFailError</failure></testcase><testcase classname="test_update_project.tavern.yaml" file="test_update_project.tavern.yaml" line="0" name="Modify project name" time="0.0004448890686035156"><skipped message="unconditional skip" type="pytest.skip">test_update_project.tavern.yaml:0: unconditional skip</skipped></testcase></testsuite>
+../virtual-environments/TavernVENV/lib/python3.7/site-packages/tavern/_plugins/rest/response.py:207: TestFailError</failure></testcase><testcase classname="test_update_project.tavern.yaml" file="test_update_project.tavern.yaml" line="0" name="Modify project name" time="0.0004582405090332031"><skipped message="unconditional skip" type="pytest.skip">test_update_project.tavern.yaml:0: unconditional skip</skipped></testcase></testsuite>
