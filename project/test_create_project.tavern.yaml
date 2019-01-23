@@ -9,7 +9,7 @@ marks:
     - get_identifier
 
 includes:
-  - !include constants.yaml
+  - !include /Users/cizquierdo/PycharmProjects/tavern/constants.yaml
 
 stages:
   - name: Create project

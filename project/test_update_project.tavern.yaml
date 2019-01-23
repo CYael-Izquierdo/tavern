@@ -1,4 +1,4 @@
-test_name: Deleate a created project
+test_name: Modify project name
 
 marks:
   - Working
@@ -9,7 +9,7 @@ marks:
     - get_identifier
 
 includes:
-  - !include constants.yaml
+  - !include /Users/cizquierdo/PycharmProjects/tavern/constants.yaml
 
 stages:
   - name: Create project
@@ -32,13 +32,33 @@ stages:
         body:
           id: project.id
 
-  - name: Delete project
+  - name: Modify project name
     request:
       url: "{protocol}://{host}/projects/{id}.json"
-      method: DELETE
+      method: PUT
+      headers:
+        X-Redmine-API-Key: "{api_key}"
+        Content-Type: "{content_type}"
+      json:
+        project:
+          name: new name
+          description: new description
+
+    response:
+      status_code: 200
+
+  - name: Get updated project
+    request:
+      url: "{protocol}://{host}/projects/{id}.json"
+      method: GET
       headers:
         X-Redmine-API-Key: "{api_key}"
         Content-Type: "{content_type}"
 
     response:
       status_code: 200
+      body:
+        project:
+          id: !int "{id}"
+          name: new name
+          description: new description
