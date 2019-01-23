@@ -1,4 +1,4 @@
-test_name: Create new issue
+test_name: Create new issue with invalid status
 
 marks:
   - Working
@@ -13,16 +13,16 @@ marks:
   - parametrize:
       key: status_id
       vals:
-        - 1
-
-  - parametrize:
-      key: priority_id
-      vals:
-        - 1
         - 2
         - 3
         - 4
         - 5
+        - 6
+  - parametrize:
+      key: status_id_exp
+      vals:
+        - 1
+
 
 includes:
   - !include /Users/cizquierdo/PycharmProjects/tavern/constants.yaml
@@ -57,18 +57,7 @@ stages:
         issue:
           project_id: '{project_id}'
           subject: '{generate_name}'
-          status_id: '{status_id}'
-          priority_id: '{priority_id}'
+          status_id: '{status_id_exp}'
 
     response:
       status_code: 201
-      body:
-        issue:
-          project:
-            id: !int '{project_id}'
-            name: '{project_name}'
-          status:
-            id: !int '{status_id}'
-          priority:
-            id: !int '{priority_id}'
-          subject: '{get_name}'
