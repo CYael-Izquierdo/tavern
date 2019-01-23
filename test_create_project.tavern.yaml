@@ -1,4 +1,4 @@
-test_name: Create new project without module
+test_name: Create new project without modules
 
 marks:
   - Working
