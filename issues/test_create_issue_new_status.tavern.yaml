@@ -2,7 +2,6 @@ test_name: Create new issue with valid status
 
 marks:
   - Working
-  - probando
   - usefixtures:
       - generate_name
       - get_name
@@ -66,6 +65,9 @@ stages:
           project:
             id: !int '{project_id}'
             name: '{project_name}'
+          tracker:
+            id: !anyint
+            name: !anystr
           status:
             id: !int '{status_id}'
           priority:

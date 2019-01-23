@@ -2,6 +2,7 @@ test_name: Create new issue with invalid status
 
 marks:
   - Working
+  - probando
   - usefixtures:
       - generate_name
       - get_name
@@ -60,3 +61,16 @@ stages:
 
     response:
       status_code: 201
+      body:
+        issue:
+          project:
+            id: !int '{project_id}'
+            name: '{project_name}'
+          tracker:
+            id: !anyint
+            name: !anystr
+          status:
+            id: !int '{status_id_exp}'
+          priority:
+            id: !anyint
+          subject: '{get_name}'
