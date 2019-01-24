@@ -1,4 +1,4 @@
-test_name: Create project with identifier equal to id of project created
+test_name: Create project with identifier equal to existing id
 
 marks:
   - Working
