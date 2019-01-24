@@ -7,6 +7,8 @@ marks:
     - generate_identifier
     - get_name
     - get_identifier
+    - generate_description
+    - get_description
 
 includes:
   - !include /Users/cizquierdo/PycharmProjects/tavern/constants.yaml
@@ -24,7 +26,7 @@ stages:
         project:
           name: '{generate_name}'
           identifier: '{generate_identifier}'
-          description: asdasdasdasd
+          description: '{generate_description}'
 
     response:
       status_code: 201
@@ -32,5 +34,7 @@ stages:
         project:
           name: "{get_name}"
           identifier: "{get_identifier}"
-          status: 1
+          description: "{get_description}"
+          status: !int 1
           is_public: true
+
