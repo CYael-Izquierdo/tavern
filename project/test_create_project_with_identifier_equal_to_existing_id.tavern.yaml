@@ -9,8 +9,9 @@ marks:
     - get_name
     - get_identifier
 
-includes:
-  - !include /Users/cizquierdo/PycharmProjects/tavern/constants.yaml
+# se realiza en el comando de ejecucion de los tests
+# includes:
+#   - !include /Users/cizquierdo/PycharmProjects/tavern/constants.yaml
 
 stages:
   - name: Create first project

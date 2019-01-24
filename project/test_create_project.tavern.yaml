@@ -10,9 +10,6 @@ marks:
     - generate_description
     - get_description
 
-includes:
-  - !include /Users/cizquierdo/PycharmProjects/tavern/constants.yaml
-
 stages:
   - name: Create project
 

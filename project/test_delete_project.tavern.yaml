@@ -8,9 +8,6 @@ marks:
     - get_name
     - get_identifier
 
-includes:
-  - !include /Users/cizquierdo/PycharmProjects/tavern/constants.yaml
-
 stages:
   - name: Create project
 

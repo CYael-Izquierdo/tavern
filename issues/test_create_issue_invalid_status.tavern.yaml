@@ -22,10 +22,6 @@ marks:
       vals:
         - 1
 
-
-includes:
-  - !include /Users/cizquierdo/PycharmProjects/tavern/constants.yaml
-
 stages:
   - name: Get project id by name
 
