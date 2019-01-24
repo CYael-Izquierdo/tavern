@@ -2,7 +2,6 @@ test_name: Create projects with same identifier
 
 marks:
   - Working
-  - probando
   - usefixtures:
     - generate_name
     - generate_identifier

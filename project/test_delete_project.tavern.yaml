@@ -33,12 +33,23 @@ stages:
           id: project.id
 
   - name: Delete project
+
     request:
-      url: "{protocol}://{host}/projects/{id}.json"
+      url: &url "{protocol}://{host}/projects/{id}.json"
       method: DELETE
-      headers:
+      headers: &header
         X-Redmine-API-Key: "{api_key}"
         Content-Type: "{content_type}"
 
     response:
       status_code: 200
+
+  - name: Check the project was deleted
+
+    request:
+      url: *url
+      method: GET
+      headers: *header
+
+    response:
+      status_code: 404
