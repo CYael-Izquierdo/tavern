@@ -3,13 +3,11 @@ test_name: Create new project without modules
 marks:
   - Working
   - Project
+  - probando
   - usefixtures:
     - generate_name
     - generate_identifier
-    - get_name
-    - get_identifier
     - generate_description
-    - get_description
 
 # se realiza en el comando de ejecucion de los tests
 # includes:
@@ -35,9 +33,10 @@ stages:
       status_code: 201
       body:
         project:
-          name: "{get_name}"
-          identifier: "{get_identifier}"
-          description: "{get_description}"
+          name: "{tavern.request_vars.json.project.name}"
+          identifier: "{tavern.request_vars.json.project.identifier}"
+          description: "{tavern.request_vars.json.project.description}"
+          id: !anyint
           status: 1
           is_public: true
 
@@ -51,10 +50,7 @@ marks:
   - usefixtures:
     - generate_name
     - generate_identifier
-    - get_name
-    - get_identifier
     - generate_description
-    - get_description
 
 stages:
   - name: Create first project
@@ -65,11 +61,12 @@ stages:
       status_code: 201
       body:
         project:
-          name: "{get_name}"
-          identifier: "{get_identifier}"
-          description: "{get_description}"
+          name: "{tavern.request_vars.json.project.name}"
+          identifier: "{tavern.request_vars.json.project.identifier}"
+          description: "{tavern.request_vars.json.project.description}"
           status: 1
           is_public: !bool true
+          id: !anyint
       save:
         body:
           identifier: project.identifier
@@ -102,10 +99,7 @@ marks:
   - usefixtures:
     - generate_name
     - generate_identifier
-    - get_name
-    - get_identifier
     - generate_description
-    - get_description
 
 stages:
   - name: Create first project
@@ -132,21 +126,6 @@ stages:
     response:
       status_code: 422
 
-  - name: Get project
-
-    request: &get_project_by_id_request
-      url: &project_id_url "{protocol}://{host}/projects/{id}.json"
-      method: GET
-      headers: *header
-
-    response:
-      status_code: 200
-      body:
-        project:
-          name: '{get_name}'
-          identifier: '{get_identifier}'
-          id: !int '{id}'
-
 ---
 
 test_name: Deleate a created project
@@ -157,11 +136,7 @@ marks:
   - usefixtures:
     - generate_name
     - generate_identifier
-    - get_name
-    - get_identifier
     - generate_description
-    - get_description
-
 
 stages:
   - name: Create project
@@ -177,7 +152,7 @@ stages:
   - name: Delete project
 
     request:
-      url: *project_id_url
+      url: &project_id_url "{protocol}://{host}/projects/{id}.json"
       method: DELETE
       headers: *header
 
@@ -204,10 +179,7 @@ marks:
   - usefixtures:
     - generate_name
     - generate_identifier
-    - get_name
-    - get_identifier
     - generate_description
-    - get_description
 
 stages:
   - name: Create project
