@@ -5,7 +5,6 @@ marks:
   - Issue
   - usefixtures:
       - generate_name
-      - get_name
   - parametrize:
       key: project_identifier
       vals:
@@ -24,9 +23,9 @@ marks:
         - 1
 
 stages:
-  - name: Get project id by name
+  - name: Get project by name
 
-    request:
+    request: &get_project_by_name
       url: "{protocol}://{host}/projects/{project_identifier}.json"
       method: GET
       headers: &header
@@ -46,7 +45,7 @@ stages:
   - name: Create issue
 
     request:
-      url: "{protocol}://{host}/issues.json"
+      url: &issue_url "{protocol}://{host}/issues.json"
       method: POST
       headers: *header
       json:
@@ -69,7 +68,7 @@ stages:
             id: !int '{status_id_exp}'
           priority:
             id: !anyint
-          subject: '{get_name}'
+          subject: '{tavern.request_vars.json.issue.subject}'
 
 ---
 
@@ -99,12 +98,9 @@ marks:
         - 5
 
 stages:
-  - name: Get project id by name
+  - name: Get project by name
 
-    request:
-      url: "{protocol}://{host}/projects/{project_identifier}.json"
-      method: GET
-      headers: *header
+    request: *get_project_by_name
 
     response:
       status_code: 200
@@ -119,7 +115,7 @@ stages:
   - name: Create issue
 
     request:
-      url: "{protocol}://{host}/issues.json"
+      url: *issue_url
       method: POST
       headers: *header
       json:
