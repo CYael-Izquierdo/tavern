@@ -2,6 +2,7 @@ test_name: Create new project without modules
 
 marks:
   - Working
+  - Project
   - usefixtures:
     - generate_name
     - generate_identifier
@@ -10,17 +11,22 @@ marks:
     - generate_description
     - get_description
 
+# se realiza en el comando de ejecucion de los tests
+# includes:
+#   - !include /Users/cizquierdo/PycharmProjects/tavern/constants.yaml
+# $ pytest --tavern-global-cfg=/Users/cizquierdo/PycharmProjects/tavern/constants.yaml
+
 stages:
   - name: Create project
 
-    request:
-      url: "{protocol}://{host}/projects.json"
+    request: &create_project_with_random_value
+      url: &post_project_url "{protocol}://{host}/projects.json"
       method: POST
-      headers:
+      headers: &header
         X-Redmine-API-Key: "{api_key}"
         Content-Type: "{content_type}"
       json:
-        project:
+        project: &project_with_random_values
           name: '{generate_name}'
           identifier: '{generate_identifier}'
           description: '{generate_description}'
@@ -32,6 +38,211 @@ stages:
           name: "{get_name}"
           identifier: "{get_identifier}"
           description: "{get_description}"
-          status: !int 1
+          status: 1
           is_public: true
 
+---
+
+test_name: Create projects with same identifier
+
+marks:
+  - Working
+  - Project
+  - usefixtures:
+    - generate_name
+    - generate_identifier
+    - get_name
+    - get_identifier
+    - generate_description
+    - get_description
+
+stages:
+  - name: Create first project
+
+    request: *create_project_with_random_value
+
+    response:
+      status_code: 201
+      body:
+        project:
+          name: "{get_name}"
+          identifier: "{get_identifier}"
+          description: "{get_description}"
+          status: 1
+          is_public: !bool true
+      save:
+        body:
+          identifier: project.identifier
+          name: project.name
+
+  - name: Create second project
+
+    request:
+      url: *post_project_url
+      method: POST
+      headers: *header
+      json:
+        project:
+          name: name
+          identifier: identifier
+
+    response:
+      status_code: 422
+      body:
+        errors:
+          - "Identifier has already been taken"
+
+---
+
+test_name: Create project with identifier equal to existing id
+
+marks:
+  - Working
+  - Project
+  - usefixtures:
+    - generate_name
+    - generate_identifier
+    - get_name
+    - get_identifier
+    - generate_description
+    - get_description
+
+stages:
+  - name: Create first project
+
+    request: *create_project_with_random_value
+
+    response:
+      status_code: 201
+      save:
+        body:
+          id: project.id
+
+  - name: Create project with identifier equal to id of project created
+
+    request:
+      url: *post_project_url
+      method: POST
+      headers: *header
+      json:
+        project:
+          name: 'second project'
+          identifier: !int '{id}'
+
+    response:
+      status_code: 422
+
+  - name: Get project
+
+    request: &get_project_by_id_request
+      url: &project_id_url "{protocol}://{host}/projects/{id}.json"
+      method: GET
+      headers: *header
+
+    response:
+      status_code: 200
+      body:
+        project:
+          name: '{get_name}'
+          identifier: '{get_identifier}'
+          id: !int '{id}'
+
+---
+
+test_name: Deleate a created project
+
+marks:
+  - Working
+  - Project
+  - usefixtures:
+    - generate_name
+    - generate_identifier
+    - get_name
+    - get_identifier
+    - generate_description
+    - get_description
+
+
+stages:
+  - name: Create project
+
+    request: *create_project_with_random_value
+
+    response:
+      status_code: 201
+      save:
+        body:
+          id: project.id
+
+  - name: Delete project
+
+    request:
+      url: *project_id_url
+      method: DELETE
+      headers: *header
+
+    response:
+      status_code: 200
+
+  - name: Check the project was deleted
+
+    request:
+      url: *project_id_url
+      method: GET
+      headers: *header
+
+    response:
+      status_code: 404
+
+---
+
+test_name: Modify project name
+
+marks:
+  - Working
+  - Project
+  - usefixtures:
+    - generate_name
+    - generate_identifier
+    - get_name
+    - get_identifier
+    - generate_description
+    - get_description
+
+stages:
+  - name: Create project
+
+    request: *create_project_with_random_value
+
+    response:
+      status_code: 201
+      save:
+        body:
+          id: project.id
+
+  - name: Modify project name
+    request:
+      url: *project_id_url
+      method: PUT
+      headers: *header
+      json:
+        project:
+          name: new name
+          description: new description
+
+    response:
+      status_code: 200
+
+  - name: Get updated project
+    request:
+      url: *project_id_url
+      method: GET
+      headers: *header
+
+    response:
+      status_code: 200
+      body:
+        project:
+          id: !int "{id}"
+          name: new name
+          description: new description
