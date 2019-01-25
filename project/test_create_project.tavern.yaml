@@ -26,7 +26,7 @@ stages:
         X-Redmine-API-Key: "{api_key}"
         Content-Type: "{content_type}"
       json:
-        project: &project_with_random_values
+        project:
           name: '{generate_name}'
           identifier: '{generate_identifier}'
           description: '{generate_description}'
