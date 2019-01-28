@@ -225,7 +225,6 @@ test_name: Get all project
 marks:
   - Working
   - Project
-  - probando
   - usefixtures:
     - generate_name
     - generate_identifier

@@ -238,3 +238,4 @@ stages:
           subject: "{issue_subject}"
           status:
             id: !int "{status_id}"
+            name: !anystr
