@@ -3,7 +3,6 @@ test_name: Create new project without modules
 marks:
   - Working
   - Project
-  - probando
   - usefixtures:
     - generate_name
     - generate_identifier
@@ -218,3 +217,30 @@ stages:
           id: !int "{id}"
           name: new name
           description: new description
+
+---
+
+test_name: Get all project
+
+marks:
+  - Working
+  - Project
+  - probando
+  - usefixtures:
+    - generate_name
+    - generate_identifier
+    - generate_description
+
+stages:
+  - name: Get projects
+
+    request:
+      url: *post_project_url
+      method: GET
+      headers: *header
+
+    response:
+      status_code: 200
+      body:
+        $ext:
+          function: project.utils:check_projects
