@@ -1,3 +1,4 @@
 assertpy
 tavern[pytest]
 faker
+pytest-html
