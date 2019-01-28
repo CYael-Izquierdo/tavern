@@ -129,6 +129,7 @@ stages:
       status_code: 201
       body:
         issue:
+          id: !anyint
           project:
             id: !int '{project_id}'
             name: '{project_name}'
@@ -140,3 +141,100 @@ stages:
           priority:
             id: !int '{priority_id}'
           subject: '{get_name}'
+
+---
+
+test_name: Update issue
+
+marks:
+  - Working
+  - Issue
+  - usefixtures:
+      - generate_name
+      - get_name
+  - parametrize:
+      key: project_identifier
+      vals:
+        - test_issues_project
+  - parametrize:
+      key: issue_subject
+      vals:
+        - subject changed
+  - parametrize:
+      key: issue_note
+      vals:
+        - the subject was changed
+  - parametrize:
+      key: status_id
+      vals:
+        - 2
+        - 3
+        - 4
+        - 5
+
+stages:
+  - name: Get project by name
+
+    request: *get_project_by_name
+
+    response:
+      status_code: 200
+      body:
+        project:
+          identifier: "{project_identifier}"
+      save:
+        body:
+          project_id: project.id
+          project_name: project.name
+
+  - name: Create issue
+
+    request:
+      url: *issue_url
+      method: POST
+      headers: *header
+      json:
+        issue:
+          project_id: '{project_id}'
+          subject: '{generate_name}'
+          status_id: '{status_id}'
+
+    response:
+      status_code: 201
+      body:
+        issue:
+          id: !anyint
+      save:
+        body:
+          issue_id: issue.id
+
+  - name: Update issue
+
+    request:
+      url: "{protocol}://{host}/issues/{issue_id}.json"
+      method: PUT
+      headers: *header
+      json:
+        issue:
+          subject: "{issue_subject}"
+          notes: "{issue_note}"
+          status_id: !int "{status_id}"
+
+    response:
+      status_code: 200
+
+  - name: Get issue
+
+    request:
+      url: "{protocol}://{host}/issues/{issue_id}.json"
+      method: GET
+      headers: *header
+
+    response:
+      status_code: 200
+      body:
+        issue:
+          id: !int "{issue_id}"
+          subject: "{issue_subject}"
+          status:
+            id: !int "{status_id}"
